@@ -1,95 +1,37 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { Card, Container, Grid } from "@mui/material";
+import platfroms from "@/public/platforms.json";
+import Image from "next/image";
+import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
-export default function Home() {
+export const Page = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <>
+      <Container maxWidth="md">
+      <Typography variant="h4" align="center" sx={{ my: '2rem' }}><strong>Select a platform</strong></Typography>
+      <Container maxWidth="md" sx={{
+        display: 'flex',
+        flexDirection: 'row', // this is the default and can be omitted
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '2rem'
+      }}>
+        <Grid container spacing={6}> {/* Add spacing between grid items */}
+          {platfroms.map(platform => 
+            <Grid item xs={12} sm={6} md={3}> {/* Responsive grid layout */}
+              <Link href={`/${platform.name.toLowerCase()}`}>
+                <Card className="hover-box" sx={{ width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column', padding: '1rem', boxShadow: 'none', border: '1px solid black' }}> {/* Make card take full width of its container */}
+                  <Image height={150} width={150} src={`/${platform.logo}`} />
+                  <Typography>{platform.name}</Typography>
+                </Card>
+              </Link>
+            </Grid>
+          )}
+        </Grid>
+      </Container>
+      </Container>
+    </>
   )
 }
+
+export default Page;

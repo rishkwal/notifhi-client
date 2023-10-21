@@ -1,0 +1,22 @@
+[
+    {
+        "identifier":"discord",
+        "name":"Discord",
+        "logo":"discord_logo.png"
+    },
+    {
+        "identifier":"telegram",
+        "name":"Telegram",
+        "logo":"telegram_logo.png"
+    },
+    {
+        "identifier":"slack",
+        "name":"Slack",
+        "logo":"slack_logo.png"
+    },
+    {
+        "identifier":"email",
+        "name":"Email",
+        "logo":"email_logo.png"
+    }
+]
